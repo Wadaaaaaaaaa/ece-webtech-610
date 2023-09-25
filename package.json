@@ -1,0 +1,20 @@
+{
+  "name": "lab2",
+  "version": "1.0.0",
+  "description": "hello world how are you",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/marwansrg27/tutogit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marwansrg27/tutogit/issues"
+  },
+  "homepage": "https://github.com/marwansrg27/tutogit#readme"
+}
