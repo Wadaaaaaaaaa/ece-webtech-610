@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/marwansrg27/tutogit/issues"
   },
-  "homepage": "https://github.com/marwansrg27/tutogit#readme"
+  "homepage": "https://github.com/marwansrg27/tutogit#readme",
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
