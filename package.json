@@ -4,7 +4,7 @@
   "description": "hello world how are you",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
