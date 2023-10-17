@@ -49,6 +49,23 @@ app.get('/about', (req, res) => {
   });
 
 
+  app.get('/contacts', (req, res) => {
+    res.send('Contacts Page');
+  });
+  
+  app.get('/articles', (req, res) => {
+    // Dummy data for a list of articles
+    const articles = [
+      { title: 'Article 1', content: 'Content of Article 1' },
+      { title: 'Article 2', content: 'Content of Article 2' },
+      // Add more articles as needed
+    ];
+  
+    // Render a page with the list of articles
+    res.json(articles);
+  });
+
+
 // Route 3: Any other path returns a 404 with a "Not Found" message
 app.use((req, res) => {
   res.status(404).send('Not Found');
