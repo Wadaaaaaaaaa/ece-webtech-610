@@ -4,10 +4,17 @@
 export default function HomePage() {
   return(
     <>
-    <h1>Page d'Accueil</h1>
+    
+    <div class="bg-gray-700 h-screen text-white">
+    <h1 className="text-white font-bold underline text-6xl">
+      Home Page
+    </h1>
+    <br/>
+    <br/>
     <Article titre="Article 1" >
       <p>"Contenu de l'article 1"</p>
     </Article>  
+    </div>
     
     </>
   )

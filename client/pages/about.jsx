@@ -3,9 +3,14 @@ import Layout from "../Layout";
 
 const About = () => {
   return (
-  
-      <h1>À propos</h1>
-     
+    <div class="bg-gray-700 h-screen">
+    <h1 className="text-white font-bold underline text-6xl">
+      A Propos
+    </h1>
+    <br/>
+    <br/>
+
+    </div>
   );
 };
 
