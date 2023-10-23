@@ -1,12 +1,11 @@
 // client/pages/about.js
-import React from 'react';
+import Layout from "../Layout";
 
 const About = () => {
   return (
-    <div>
+  
       <h1>À propos</h1>
-      {/* Ajoutez ici le contenu de votre page "À propos" */}
-    </div>
+     
   );
 };
 
