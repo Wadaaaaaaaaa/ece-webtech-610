@@ -6,7 +6,7 @@ export default function HomePage() {
     <>
     
     <div class="bg-gray-700 h-screen text-white">
-    <h1 className="text-white font-bold underline text-6xl">
+    <h1 className="text-white font-bold underline text-6xl text-center">
       Home Page
     </h1>
     <br/>
