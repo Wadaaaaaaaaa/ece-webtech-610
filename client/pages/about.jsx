@@ -1,4 +1,4 @@
-// client/pages/about.js
+
 import Layout from "../Layout";
 
 const About = () => {

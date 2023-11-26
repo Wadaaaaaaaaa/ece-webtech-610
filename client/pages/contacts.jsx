@@ -1,5 +1,3 @@
-// client/pages/contacts.js
-
 
 
 
