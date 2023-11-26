@@ -14,14 +14,14 @@ git clone https://github.com/Wadaaaaaaaaa/ece-webtech-610.git
 
 ## Etat d'avancement 
 
-Lab 1 fait
-Lab 2 fait
-Lab 3 fait
-Lab 4 fait
-Lab 5 fait
-Lab 6 fait
-Lab 7 fait
-Lab 8 en cours
+- Lab 1 fait
+- Lab 2 fait
+- Lab 3 fait
+- Lab 4 fait
+- Lab 5 fait
+- Lab 6 fait
+- Lab 7 fait
+- Lab 8 en cours
 
 ## Initialize a Node.js package
 
