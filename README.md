@@ -22,7 +22,8 @@ git clone https://github.com/Wadaaaaaaaaa/ece-webtech-610.git
 - Lab 6 fait
 - Lab 7 fait
 - Lab 8 en cours
-
+- Lab 9 en cours 
+- Lab10 fait
 ## Initialize a Node.js package
 
 Initialize a Node.js package running this command:
@@ -55,3 +56,5 @@ contenant le layout appliqué à toutes les pages.
 
 5. Du dossier [`styles`](client/styles/)
 contenant le fichier `global.css`.
+## Deployment
+ Vercel 
