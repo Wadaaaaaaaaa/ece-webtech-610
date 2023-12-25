@@ -37,6 +37,20 @@ const SignUp = () => {
     }
   }
 
+  async function handleGitHubSignUp() {
+    try {
+      
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'github'
+    })
+
+      if (error) throw error;
+      // Faites quelque chose avec 'user' et 'session' après connexion réussie
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
   return (
     <div className="bg-gray-200 min-h-screen flex flex-col items-center justify-center">
       <div className="bg-white p-8 rounded shadow-md">
@@ -72,10 +86,16 @@ const SignUp = () => {
           </button>
         </form>
 
+        <button
+          onClick={handleGitHubSignUp}
+          className="bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-gray-700 focus:outline-none w-full mt-4"
+        >
+          Sign Up with GitHub
+        </button>
+
         <p className="mt-4">
           Already have an account?{' '}
-          <Link href="/login-native" className="text-blue-500 hover:underline">Log In
-          </Link>
+          <Link href="/login-native" className="text-blue-500 hover:underline">Log In</Link>
         </p>
       </div>
     </div>

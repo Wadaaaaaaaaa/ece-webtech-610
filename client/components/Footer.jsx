@@ -12,7 +12,7 @@ export const Footer = () => {
             <h3 className="text-lg font-semibold mb-2">Liens utiles</h3>
             <ul>
               <li>
-                <a href="/">Accueil</a>
+                <a href="/homepage">Accueil</a>
               </li>
               <li>
                 <a href="/articles">Articles</a>

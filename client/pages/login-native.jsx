@@ -1,14 +1,58 @@
 import Link from 'next/link';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router'; // Import du useRouter
 import { supabase } from '../supabase'; 
 
-const LoginNative = () => {
+const LoginNative = ({}) => {
   
+  const router = useRouter(); // Utilisation du useRouter
+
+  const [formData,setFormData] = useState({
+        email:'',password:''
+  })
+
+  console.log(formData)
+
+  function handleChange(event){
+    setFormData((prevFormData)=>{
+      return{
+        ...prevFormData,
+        [event.target.name]:event.target.value
+      }
+
+    })
+
+  }
+
+  async function handleSubmit(e){
+    e.preventDefault()
+
+    try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: formData.email,
+            password: formData.password,
+          })
+
+      if (error) throw error
+      console.log(data)
+   
+
+
+
+    //   redirection vers homepage
+    router.push('/homepage');
+      
+    } catch (error) {
+      alert(error)
+    }
+  }
+
 
   return (
     <div className="bg-gray-700 h-screen text-black flex items-center justify-center">
       <div className="bg-white p-6 rounded-lg shadow-md">
         {/* Formulaire */}
-        <form className="mb-4">
+        <form onSubmit={handleSubmit} className="mb-4">
           <div className="mb-4">
             <label htmlFor="username" className="block text-gray-700 font-bold mb-2">
               Email:
@@ -17,6 +61,7 @@ const LoginNative = () => {
               type="text"
               id="email"
               name="email"
+              onChange={handleChange}
               className="border border-gray-300 rounded-md px-4 py-2 w-full"
             />
           </div>
@@ -28,6 +73,7 @@ const LoginNative = () => {
               type="password"
               id="password"
               name="password"
+              onChange={handleChange}
               className="border border-gray-300 rounded-md px-4 py-2 w-full"
             />
           </div>
