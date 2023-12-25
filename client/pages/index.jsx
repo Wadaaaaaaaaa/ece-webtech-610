@@ -2,21 +2,17 @@
 
 
 export default function HomePage() {
-  return(
-    <>
+  return (
     
-    <div class="bg-gray-700 h-screen text-white">
-    <h1 className="text-white font-bold underline text-6xl text-center">
-      Home Page
-    </h1>
-    <br/>
-    <br/>
-    <Article titre="Article 1" >
-      <p>"Contenu de l'article 1"</p>
-    </Article>  
-    </div>
-    
-    </>
+    <div className="bg-gradient-to-r from-green-400 to-blue-500 h-screen text-white">
+    <div className="container mx-auto py-20">
+      <h1 className="text-6xl font-bold mb-8">Accueil</h1>
+      <p className="text-2xl">Bienvenue sur notre blog de voyages et de destinations. Explorez le monde à travers nos articles et découvrez des paysages extraordinaires !</p>
+          <Article titre="Article 1" >
+            <p>"Contenu de l'article 1"</p>
+          </Article>  
+        </div>
+      </div>
   )
 }
 
