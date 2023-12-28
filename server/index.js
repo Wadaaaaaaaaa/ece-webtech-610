@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 // Configurez Supabase
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SERVICE_ROLE_KEY);
 
 // Utiliser les routes de destinations
 app.use('/destinations', destinationsRoutes(supabase));
