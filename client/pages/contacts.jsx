@@ -3,7 +3,7 @@ import Layout from "../Layout";
 const Contacts = () => {
   return (
     
-      <div className="bg-gradient-to-r from-green-300 to-blue-300 h-screen text-white">
+      <div className="bg-white h-screen text-black">
         <div className="container mx-auto py-20">
           <h1 className="text-6xl font-bold mb-8">Contactez-nous</h1>
           <p className="text-xl mb-6">

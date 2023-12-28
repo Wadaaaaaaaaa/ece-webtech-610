@@ -9,7 +9,7 @@ import newYorkimage from '../images/new-york.jpg';
 const ArticlesPage = ({ destinations }) => {
   return (
     
-      <div className="bg-gradient-to-r from-purple-500 to-indigo-500 min-h-screen text-white">
+      <div className="bg-white min-h-screen text-black">
         <div className="container mx-auto py-20">
           <h1 className="text-6xl font-bold mb-8">Destinations</h1>
           <ul className="grid grid-cols-1 gap-4">

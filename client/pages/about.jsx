@@ -3,7 +3,7 @@ import parisimage from "../images/paris.jpg";
 
 const About = () => {
   return (
-    <div className="bg-gradient-to-r from-purple-300 to-pink-300 h-screen text-white">
+    <div className="bg-white h-screen text-black">
       <div className="container mx-auto py-20">
         <h1 className="text-6xl font-bold mb-8">À Propos</h1>
         <p className="text-xl mb-6">
