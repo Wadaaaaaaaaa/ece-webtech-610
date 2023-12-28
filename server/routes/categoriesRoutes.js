@@ -5,7 +5,7 @@ module.exports = (supabase) => {
     const router = express.Router();
 
     // Créer une nouvelle catégorie
-    router.post('/', async (req, res) => {
+    router.post('/create', async (req, res) => {
         const { data, error } = await supabase
             .from('categories')
             .insert([req.body]);
@@ -25,7 +25,7 @@ module.exports = (supabase) => {
     });
 
     // Mettre à jour une catégorie
-    router.put('/:id', async (req, res) => {
+    router.put('/update/:id', async (req, res) => {
         const { id } = req.params;
         const { data, error } = await supabase
             .from('categories')
@@ -37,7 +37,7 @@ module.exports = (supabase) => {
     });
 
     // Supprimer une catégorie
-    router.delete('/:id', async (req, res) => {
+    router.delete('/delete/:id', async (req, res) => {
         const { id } = req.params;
         const { data, error } = await supabase
             .from('categories')
