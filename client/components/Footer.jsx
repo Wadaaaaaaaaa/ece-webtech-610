@@ -15,7 +15,7 @@ export const Footer = () => {
                 <a href="/homepage">Accueil</a>
               </li>
               <li>
-                <a href="/articles">Articles</a>
+                <a href="/destinations">Destinations</a>
               </li>
               <li>
                 <a href="/about">À propos</a>
@@ -35,7 +35,7 @@ export const Footer = () => {
               <li>
                 <a href="https://instagram.com">Instagram</a>
               </li>
-              {/* Ajoute d'autres liens vers les réseaux sociaux */}
+              
             </ul>
           </div>
         </div>

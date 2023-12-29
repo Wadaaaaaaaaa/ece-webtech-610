@@ -34,19 +34,19 @@ const ArticlesPage = ({ destinations: initialDestinations }) => {
                 <div className="flex items-center">
                   <div className="relative">
                     {/* Utilise Image pour afficher ton image */}
-                    <Image
+                    <img
                       src={destination.image}
                       alt={destination.name}
-                      width={500}
+                      width={1000}
                       height={300}
-                      className="rounded-lg"
+                      
                     />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <div className="text-white text-4xl font-bold">{destination.libelle}</div>
                     </div>
                   </div>
                   <div className="ml-4 text-white">
-                    <p className="text-xl font-semibold">{destination.description}</p>
+                    <p className="text-xl font-semibold">Cliquer pour en savoir plus</p>
                   </div>
                 </div>
               </Link>

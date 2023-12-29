@@ -6,40 +6,42 @@ import tokyoimage from '../images/tokyo.jpg';
 import londonimage from '../images/london.jpg';
 import newYorkimage from '../images/new-york.jpg';
 
-
 const HomePage = ({ destinations }) => {
   return (
     <Layout>
-    <div className="bg-white min-h-screen text-black">
-      <div className="container mx-auto py-20">
-        <h1 className="text-6xl font-bold mb-8">Accueil</h1>
-        <ul className="grid grid-cols-1 gap-4">
-          {destinations.map((destination) => (
-            <li
-              key={destination.id}
-              className="relative bg-gray-800 p-4 rounded-lg transition duration-300 cursor-pointer"
-            >
-              
-                <div className="flex items-center">
-                  <div className="relative">
-                    <Image src={destination.image} alt={destination.name} width={500} height={300} className="rounded-lg" />
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="text-white text-4xl font-bold">{destination.name}</div>
+      <div className="bg-white min-h-screen text-black">
+        <div className="container mx-auto py-20">
+          <h1 className="text-6xl font-bold mb-8">Accueil</h1>
+          <ul className="grid grid-cols-2 gap-0">
+            {destinations.map((destination) => (
+              <li
+                key={destination.id}
+                className="relative bg-gray-800 p-0  cursor-pointer"
+              >
+                
+                  <div className="flex items-center">
+                    <div className="relative">
+                      <Image
+                        src={destination.image}
+                        alt={destination.name}
+                        width={800}
+                        height={200}
+                        className=""
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="text-white text-4xl font-bold">
+                          {destination.name}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="ml-4 text-white">
-                    <p className="text-xl font-semibold">{destination.description}</p>
-                  </div>
-                </div>
-              
-              {/* Autres informations sur la destination */}
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
     </Layout>
-);
+  );
 };
 export default HomePage;
   

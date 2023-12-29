@@ -1,45 +1,46 @@
-import parisimage from '../../images/paris.jpg';
-import tokyoimage from '../../images/tokyo.jpg';
-import londonimage from '../../images/london.jpg';
-import newYorkimage from '../../images/new-york.jpg';
 import Image from 'next/image';
 import Layout from '../../Layout';
 
 const DestinationPage = ({ destination }) => {
   return (
     <Layout>
-    <div className="bg-white min-h-screen text-black">
-      <div className="container mx-auto py-20">
-        <h1 className="text-6xl font-bold mb-8">{destination.libelle}</h1>
-        <div className="relative bg-gray-800 p-4 rounded-lg">
-          <div className="flex items-center">
-            <div className="relative">
-              <Image
-                src={destination.image}
-                alt={destination.libelle}
-                width={500}
-                height={300}
-                className="rounded-lg"
-              />
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="text-white text-4xl font-bold">
-                  {destination.libelle}
+      <div className="bg-white min-h-screen text-black">
+        <div className="container mx-auto py-20">
+          <h1 className="text-6xl font-bold mb-8">{destination.libelle}</h1>
+          <div className="grid grid-cols-2 gap-0">
+            <div className="relative bg-gray-800 p-4 ">
+              <div className="relative">
+                <Image
+                  src={destination.image}
+                  alt={destination.libelle}
+                  width={700}
+                  height={300}
+                  className="rounded-lg"
+                />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="text-white text-4xl font-bold">
+                    {destination.libelle}
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="ml-4 text-white">
-              <p className="text-xl font-semibold">{destination.description}</p>
+            <div className="bg-gray-800 p-4 ">
+              <p className="text-white text-xl font-semibold">
+                {destination.description}
+              </p>
             </div>
           </div>
+          {/* Autres informations sur la destination */}
         </div>
-        {/* Autres informations sur la destination */}
       </div>
-    </div>
     </Layout>
   );
 };
 
 export default DestinationPage;
+
+// Reste du code inchangé
+
 
 export async function getStaticPaths(param) {
   const response = await fetch(`https://server-webtech-610.vercel.app/destinations`)
