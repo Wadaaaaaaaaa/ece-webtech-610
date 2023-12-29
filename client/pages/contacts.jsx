@@ -2,7 +2,7 @@ import Layout from "../Layout";
 
 const Contacts = () => {
   return (
-    
+      <Layout>
       <div className="bg-white h-screen text-black">
         <div className="container mx-auto py-20">
           <h1 className="text-6xl font-bold mb-8">Contactez-nous</h1>
@@ -25,7 +25,7 @@ const Contacts = () => {
           </div>
         </div>
       </div>
-    
+      </Layout>
   );
 };
 

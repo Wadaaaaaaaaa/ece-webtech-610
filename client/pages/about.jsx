@@ -1,8 +1,10 @@
 import Image from "next/image";
 import parisimage from "../images/paris.jpg";
+import Layout from "../Layout"
 
 const About = () => {
   return (
+    <Layout>
     <div className="bg-white h-screen text-black">
       <div className="container mx-auto py-20">
         <h1 className="text-6xl font-bold mb-8">À Propos</h1>
@@ -16,10 +18,8 @@ const About = () => {
           Merci de me rejoindre dans cette aventure de découverte du monde !
         </p>
       </div>
-      
-
-      
     </div>
+    </Layout>
   );
 };
 
