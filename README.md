@@ -1,5 +1,6 @@
-# ECE-WEBTECH-610
 
+
+# Blogging application - ECE-WEBTECH-610
 ## Membres du groupe :
 - Marwan SARGHA
 - Jordan TCHUEM-SIAKA
@@ -12,18 +13,6 @@ Clonez ce dépôt.
 git clone https://github.com/Wadaaaaaaaaa/ece-webtech-610.git
 ```
 
-## Etat d'avancement 
-
-- Lab 1 fait
-- Lab 2 fait
-- Lab 3 fait
-- Lab 4 fait
-- Lab 5 fait
-- Lab 6 fait
-- Lab 7 fait
-- Lab 8 en cours
-- Lab 9 en cours 
-- Lab10 fait
 ## Initialize a Node.js package
 
 Initialize a Node.js package running this command:
@@ -56,5 +45,96 @@ contenant le layout appliqué à toutes les pages.
 
 5. Du dossier [`styles`](client/styles/)
 contenant le fichier `global.css`.
-## Deployment
- Vercel 
+
+
+## Deliverables 
+
+- Vercel URL: *client-webtech-610.vercel.app*
+- Supabase project URL: *https://tlamqakrieduehjsuhka.supabase.co*
+
+## Authors
+
+- *Marwan SARGHA, groupe_06*
+- *Mamadou WADE, groupe_06*
+- *Jordan TCHUEM-SIAKA, groupe_06*
+
+## Evaluation
+
+### Mandatory Tasks
+
+* **Naming convention**
+  * Grade: *2*
+  * Comments: **
+  
+* **Project structure**
+  * Grade: *2*
+  * Comments: *Le projet respecte la structure demandée*
+  
+* **Git usage**
+  * Grade: *2*
+  * Comments: *On a respecté les conventionals commits*
+  
+* **Code quality**
+  * Grade: *4*
+  * Comments: *On a essayé de bien indenter nous même le code sans utiliser Prettier car on a pas su l'installer*
+
+* **Design, UX, and content**
+  * Grade: *3*
+  * Comments: *Le design aurait pu être améliorer*
+
+* **Home page**
+  * Grade: *2*
+  * Comments: *On a pas utilisé de template*
+  
+* **Navigation**
+  * Grade: *2
+  * Comments: *On a bien exporté la navbar comme composant pour être utilisé dans le layout*
+  
+* **Login and profile page**
+  * Grade: *3*
+  * Comments: *L'authentification fonctionne par email et par github*
+  * Task feedback: *Difficile à comprendre au début*
+* **Post creation and display**
+  * Grade: *3*
+  * Comments: *On a eu des difficultés pour la création de posts mais au minimum on peut afficher les données de la base de données*
+  * Task feedback: *Facultative, how did you find the task (difficulty, pertinence...)*
+* **Comment creation and display**
+  * Grade: *0*
+
+* **Post modification and removal**
+  * Grade: *0*
+ 
+* **Search**
+  * Grade: *0*
+* **Use an external API**
+  * Grade: *0*  
+* **Resource access control**
+  * Grade: *2*
+  * Comments: *On a crée les RLS sur supabase mais malheureusent elles n'ont pas l'air de fonctionner*
+  * Task feedback: *Difficile à faire*
+* **Account settings**
+  * Grade: *2*
+  * Comments: *On peut juste afficher les informations du compte mais pas les modifier*
+
+* **WYSIWYG integration**
+  * Grade: *0*
+
+* **Gravatar integration**
+  * Grade: *0*
+  
+* **Light/dark mode**
+  * Grade: *0*
+
+
+### Bonus Tasks
+
+
+
+## Miscellaneous
+
+### Course Feedback
+
+*La bon côté de cette matière c'est le fait de pouvoir travailler en autonomie, par contre on aurait préféré un support de cours autre que les index sur github*
+### Project Reuse
+
+- [ ] We authorize the professors to use our project as an example for the next year students (facultative).
