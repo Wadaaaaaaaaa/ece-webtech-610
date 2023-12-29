@@ -60,5 +60,17 @@ module.exports = (supabase) => {
         res.json(data);
     });
 
+    // Récupérer une destination par son ID
+    router.get('/:id', async (req, res) => {
+        const { id } = req.params;
+        const { data, error } = await supabase
+            .from('destinations')
+            .select('*')
+            .eq('id', id);
+
+        if (error) return res.status(400).json({ error });
+        res.json(data[0]);
+    });
+
     return router;
 };

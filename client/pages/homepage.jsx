@@ -19,7 +19,7 @@ const HomePage = ({ destinations }) => {
               key={destination.id}
               className="relative bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition duration-300 cursor-pointer"
             >
-              <Link href={`/destinations/${destination.id}`}>
+              
                 <div className="flex items-center">
                   <div className="relative">
                     <Image src={destination.image} alt={destination.name} width={500} height={300} className="rounded-lg" />
@@ -31,7 +31,7 @@ const HomePage = ({ destinations }) => {
                     <p className="text-xl font-semibold">{destination.description}</p>
                   </div>
                 </div>
-              </Link>
+              
               {/* Autres informations sur la destination */}
             </li>
           ))}

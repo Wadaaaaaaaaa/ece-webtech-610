@@ -38,53 +38,35 @@ const DestinationPage = ({ destination }) => {
 
 export default DestinationPage;
 
-export async function getStaticPaths() {
-  // Récupérez les IDs de vos destinations depuis votre source de données (Supabase, etc.)
-  const destinationIds = ['1', '2', '3', '4']; // Liste des IDs
+export async function getStaticPaths(param) {
+  const response = await fetch(`https://server-webtech-610.vercel.app/destinations`)
+  const destinations = await response.json()
 
-  // Générez les chemins pour les pages dynamiques
-  const paths = destinationIds.map((id) => ({
-    params: { id },
-  }));
-
-  return { paths, fallback: false };
+  return {
+    paths: destinations.map( destination => `/destinations/${destination.id}`),
+    fallback: false
+  };
 }
 
 export async function getStaticProps({ params }) {
-  // Récupérez les données de la destination en fonction de l'ID
-  // Utilisez Supabase ou toute autre source de données ici
-  const destinations = [
-    {
-      id: '1',
-      name: 'Paris',
-      description: "La ville de l'amour et des lumières.",
-      image: parisimage
-    },
-    {
-        id: '2',
-        name: 'Tokyo',
-        description: 'Vibrante métropole alliant tradition et modernité.',
-        image: tokyoimage, // Chemin vers l'image de la destination
-      },
-      {
-        id: '3',
-        name: 'London',
-        description: 'Riche histoire et culture captivante.',
-        image: londonimage, // Chemin vers l'image de la destination
-      },
-      {
-        id: '4',
-        name: 'New York',
-        description: 'La ville qui ne dort jamais.',
-        image: newYorkimage, // Chemin vers l'image de la destination
-      },
-  ];
+  try {
+    const response = await fetch(`https://server-webtech-610.vercel.app/destinations/${params.id}`);
+    const destination = await response.json();
+    console.log('Destination data:', destination); // Ajoutez ce log pour voir la réponse obtenue
 
-  const destination = destinations.find((d) => d.id === params.id);
-
-  return {
-    props: {
-      destination,
-    },
-  };
+    return {
+      props: {
+        destination: destination || {} // Pour éviter les erreurs si la réponse est vide
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching destination:', error);
+    return {
+      props: {
+        destination: {} // Retourner une destination vide en cas d'erreur
+      },
+    };
+  }
 }
+
+
