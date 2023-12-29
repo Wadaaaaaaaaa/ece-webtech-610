@@ -10,6 +10,30 @@ const Contacts = () => {
             Vous souhaitez partager une expérience, poser une question ou simplement discuter ? N'hésitez pas à nous contacter !
           </p>
           <div className="flex flex-col space-y-4">
+            
+            <div className="text-lg">
+              <span className="font-bold">Auteurs :</span>
+              <ul className="list-disc pl-6">
+                <li>
+                  Marwan SARGHA, ING4-SI-06
+                  <ul className="list-disc pl-6">
+                    <li>email : marwan.sargha@edu.ece.fr</li>
+                  </ul>
+                </li>
+                <li>
+                  Mamadou WADE, ING4-SI-06
+                  <ul className="list-disc pl-6">
+                    <li>email : mamadou.wade@edu.ece.fr</li>
+                  </ul>
+                </li>
+                <li>
+                  Jordan TCHUEM-SIAKA, ING4-SI-06
+                  <ul className="list-disc pl-6">
+                    <li>email : jordan.tchuem-siaka@edu.ece.fr</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
             <p className="text-lg">
               <span className="font-bold">Email :</span> exampe@xyz.com
             </p>
@@ -22,6 +46,7 @@ const Contacts = () => {
             <p className="text-lg">
               <span className="font-bold">Formulaire de contact :</span> À venir prochainement.
             </p>
+            
           </div>
         </div>
       </div>

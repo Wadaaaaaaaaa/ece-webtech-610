@@ -9,7 +9,7 @@ import newYorkimage from '../images/new-york.jpg';
 const HomePage = ({ destinations }) => {
   return (
     <Layout>
-      <div className="bg-white min-h-screen text-black">
+      <div className="mx-auto bg-white min-h-screen text-black">
         <div className="container mx-auto py-20">
           <h1 className="text-6xl font-bold mb-8">Accueil</h1>
           <ul className="grid grid-cols-2 gap-0">
