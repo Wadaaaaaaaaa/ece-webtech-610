@@ -17,7 +17,7 @@ const HomePage = ({ destinations }) => {
           {destinations.map((destination) => (
             <li
               key={destination.id}
-              className="relative bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition duration-300 cursor-pointer"
+              className="relative bg-gray-800 p-4 rounded-lg transition duration-300 cursor-pointer"
             >
               
                 <div className="flex items-center">

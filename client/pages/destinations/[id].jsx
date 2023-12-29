@@ -3,25 +3,27 @@ import tokyoimage from '../../images/tokyo.jpg';
 import londonimage from '../../images/london.jpg';
 import newYorkimage from '../../images/new-york.jpg';
 import Image from 'next/image';
+import Layout from '../../Layout';
 
 const DestinationPage = ({ destination }) => {
   return (
+    <Layout>
     <div className="bg-white min-h-screen text-black">
       <div className="container mx-auto py-20">
-        <h1 className="text-6xl font-bold mb-8">{destination.name}</h1>
+        <h1 className="text-6xl font-bold mb-8">{destination.libelle}</h1>
         <div className="relative bg-gray-800 p-4 rounded-lg">
           <div className="flex items-center">
             <div className="relative">
               <Image
                 src={destination.image}
-                alt={destination.name}
+                alt={destination.libelle}
                 width={500}
                 height={300}
                 className="rounded-lg"
               />
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="text-white text-4xl font-bold">
-                  {destination.name}
+                  {destination.libelle}
                 </div>
               </div>
             </div>
@@ -33,6 +35,7 @@ const DestinationPage = ({ destination }) => {
         {/* Autres informations sur la destination */}
       </div>
     </div>
+    </Layout>
   );
 };
 

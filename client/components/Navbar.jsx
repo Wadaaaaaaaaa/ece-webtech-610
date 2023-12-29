@@ -25,7 +25,7 @@ export const Navbar = () => {
 
 
         <div className="mr-10 flex space-x-4 ">
-        <a href="/profil" className="tab mr-4">
+        <a href="/profiles" className="tab mr-4">
     <svg
       width="104"
       height="50"
