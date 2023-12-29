@@ -69,7 +69,7 @@ const LoginNative = ({}) => {
       <h1 class="text-center text-4xl font-bold mb-4 text-white">Log In</h1>
       <form class="flex flex-col" onSubmit={handleSubmit}>
           <div class="mb-4">
-              <label for="Email" class="text-gray-300">Email</label>
+              <label for="Email" class="text-gray-300">Email      </label>
               <input type="text"
               id="email"
               name="email"
