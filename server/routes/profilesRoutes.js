@@ -1,10 +1,9 @@
-
 const express = require('express');
 
 module.exports = (supabase) => {
     const router = express.Router();
 
-    // Créer un nouvelle profil
+    // Créer un nouveau profil
     router.post('/create', async (req, res) => {
         const { data, error } = await supabase
             .from('profiles')
@@ -14,7 +13,7 @@ module.exports = (supabase) => {
         res.status(201).json(data[0]);
     });
 
-    // Obtenir tout les profil
+    // Obtenir tous les profils
     router.get('/', async (req, res) => {
         const { data, error } = await supabase
             .from('profiles')
@@ -48,13 +47,13 @@ module.exports = (supabase) => {
         res.json(data[0]);
     });
 
-    // Rechercher des profiles
+    // Rechercher des profils
     router.get('/search', async (req, res) => {
         const { query } = req.query;
         const { data, error } = await supabase
             .from('profiles')
             .select('*')
-            .ilike('name', '%${query}%');
+            .ilike('name', `%${query}%`);
 
         if (error) return res.status(400).json({ error });
         res.json(data);
