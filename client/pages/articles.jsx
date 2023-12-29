@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Layout from '../Layout';
 
+
 const ArticlesPage = ({ destinations: initialDestinations }) => {
   const [destinations, setDestinations] = useState(initialDestinations || []);
 
@@ -19,6 +20,7 @@ const ArticlesPage = ({ destinations: initialDestinations }) => {
   }, []);
 
   return (
+    <Layout>
     <div className="bg-white min-h-screen text-black">
       <div className="container mx-auto py-20">
         <h1 className="text-6xl font-bold mb-8">Destinations</h1>
@@ -53,7 +55,12 @@ const ArticlesPage = ({ destinations: initialDestinations }) => {
           ))}
         </ul>
       </div>
+      <button class="mb-10 block mx-auto mt-8 hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-gradient-to-r from-blue-500 to-pink-500 text-white">
+          <Link href="/ajout-destination">Ajouter une destination</Link>
+      </button>
+
     </div>
+    </Layout>
   );
 };
 
