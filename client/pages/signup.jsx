@@ -1,3 +1,5 @@
+// pages/signup.jsx
+
 import React, { useState } from 'react';
 import { supabase } from '../supabase';
 import Link from 'next/link';
@@ -37,68 +39,43 @@ const SignUp = () => {
     }
   }
 
-  async function handleGitHubSignUp() {
-    try {
-      
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'github'
-    })
-
-      if (error) throw error;
-      // Faites quelque chose avec 'user' et 'session' après connexion réussie
-    } catch (error) {
-      alert(error.message);
-    }
-  }
 
   return (
-    <div className="bg-gray-200 min-h-screen flex flex-col items-center justify-center">
-      <div className="bg-white p-8 rounded shadow-md">
-        <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
-        <form className="flex flex-col" onSubmit={handleSubmit}>
-          <input
-            className="mb-4 border border-gray-300 rounded-md px-3 py-2"
-            placeholder="Full Name"
-            name="fullName"
-            onChange={handleChange}
-          />
-
-          <input
-            className="mb-4 border border-gray-300 rounded-md px-3 py-2"
-            placeholder="Email"
-            name="email"
-            onChange={handleChange}
-          />
-
-          <input
-            className="mb-4 border border-gray-300 rounded-md px-3 py-2"
-            placeholder="Password"
-            name="password"
-            type="password"
-            onChange={handleChange}
-          />
-
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md"
-          >
-            Submit
-          </button>
-        </form>
-
-        <button
-          onClick={handleGitHubSignUp}
-          className="bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-gray-700 focus:outline-none w-full mt-4"
-        >
-          Sign Up with GitHub
-        </button>
-
-        <p className="mt-4">
-          Already have an account?{' '}
-          <Link href="/login-native" className="text-blue-500 hover:underline">Log In</Link>
-        </p>
-      </div>
+    <div className="flex justify-center items-center h-screen bg-white">
+      <div class="w-80 bg-gray-800 rounded-lg p-8 text-black">
+      <h1 class="text-center text-4xl font-bold mb-4 text-white">Sign Up</h1>
+      <form class="flex flex-col" onSubmit={handleSubmit}>
+          <div class="mb-4">
+              <label for="Fullname" class="text-gray-300">Nom</label>
+              <input type="text"
+              id="fullname"
+              name="fullname"
+              onChange={handleChange}  placeholder="" class="border border-gray-300 rounded-md py-2 px-3"/>
+          </div>
+          <div class="mb-4">
+              <label for="Email" class="text-gray-300">Email</label>
+              <input type="text"
+              id="email"
+              name="email"
+              onChange={handleChange}  placeholder="" class="border border-gray-300 rounded-md py-2 px-3"/>
+          </div>
+          <div class="mb-4">
+              <label for="Mot de passe" class="text-gray-300">Mot de passe</label>
+              <input type="password"
+              id="password"
+              name="password"
+              onChange={handleChange} placeholder="" class="border border-gray-300 rounded-md py-2 px-3"/>
+              
+          </div>
+          <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md">Sign up</button>
+      </form>
+      
+      <p class="text-center mt-4 text-white">
+          Already have an account?
+          <a href="/login-native" class="text-purple-600 hover:underline"> Log in</a>
+      </p>
     </div>
+  </div>  
   );
 };
 

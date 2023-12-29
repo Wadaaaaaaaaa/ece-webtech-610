@@ -6,7 +6,7 @@ export default function HomePage() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push('/login-native');
+    router.push('/homepage');
   }, []);
 }
 

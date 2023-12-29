@@ -16,9 +16,7 @@ const About = () => {
           Merci de me rejoindre dans cette aventure de découverte du monde !
         </p>
       </div>
-      <Image
-      src={parisimage}
-      />
+      
 
       
     </div>

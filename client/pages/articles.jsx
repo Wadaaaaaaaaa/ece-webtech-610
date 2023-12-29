@@ -40,7 +40,7 @@ const ArticlesPage = ({ destinations: initialDestinations }) => {
                       className="rounded-lg"
                     />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="text-white text-4xl font-bold">{destination.name}</div>
+                      <div className="text-white text-4xl font-bold">{destination.libelle}</div>
                     </div>
                   </div>
                   <div className="ml-4 text-white">
