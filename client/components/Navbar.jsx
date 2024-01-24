@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React, {useEffect, useState} from 'react';
 import { useRouter } from "next/router"; // Importez useRouter
 import { supabase } from "../supabase";
 
@@ -11,6 +12,17 @@ export const Navbar = () => {
       router.push("/login-native"); // Redirigez vers la page d'accueil après la déconnexion
     }
   };
+
+  const [loggedIn, setLoggedIn] = useState(false);
+    useEffect(() => {
+        const session = supabase.auth.user;
+        setLoggedIn(!!session);
+
+        const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+            setLoggedIn(!!session);
+        });
+    }, []);
+
 
   return (
     <div className="bg-gradient-to-r from-green-500 to-indigo-500 h-24 flex items-center text-4xl text-white">
