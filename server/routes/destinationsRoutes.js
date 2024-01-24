@@ -1,28 +1,19 @@
 // Importez les bibliothèques nécessaires
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import supabase from '../supabaseClient';
 
-// Assurez-vous d'importer les composants ou bibliothèques nécessaires pour votre formulaire
-// Par exemple, si vous avez besoin d'un éditeur de texte, importez-le ici.
-
 export default function Ajout() {
-    const [nom, setNom] = useState(''); // Ajoutez les états nécessaires pour les champs du formulaire
+    const [nom, setNom] = useState('');
     const [description, setDescription] = useState('');
     const router = useRouter();
-
-    useEffect(() => {
-        // Mettez en place des effets secondaires si nécessaire (par exemple, chargement de données)
-    }, []);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // Récupérez les données du formulaire
         const formData = new FormData(event.target);
         const formProps = Object.fromEntries(formData.entries());
 
-        // Insérez les données dans la table des destinations
         const { data: insertData, error: insertError } = await supabase
             .from('destinations')
             .insert([formProps]);
@@ -31,16 +22,14 @@ export default function Ajout() {
             console.error('Error', insertError);
         } else {
             console.log('Inserted Data', insertData);
-            event.target.reset(); // Réinitialisez le formulaire après la soumission
-            router.push('/destinations'); // Redirigez l'utilisateur vers la liste des destinations après l'ajout
+            event.target.reset();
+            router.push('/destinations');
         }
     };
 
     return (
         <div>
-            {/* Utilisez un formulaire pour collecter les informations de destination */}
             <form onSubmit={handleSubmit} method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
-                {/* Ajoutez des champs de formulaire en fonction de vos besoins */}
                 <div className="mt-2.5">
                     <label htmlFor="nom" className="block text-sm font-semibold leading-6 text-gray-900">
                         Nom de la destination
@@ -57,8 +46,6 @@ export default function Ajout() {
                 </div>
 
                 <div className="mt-2.5">
-                    {/* Ajoutez d'autres champs de formulaire selon les besoins */}
-                    {/* Par exemple, une zone de description */}
                     <label htmlFor="description" className="block text-sm font-semibold leading-6 text-gray-900">
                         Description de la destination
                     </label>
@@ -72,9 +59,6 @@ export default function Ajout() {
                     />
                 </div>
 
-                {/* Ajoutez d'autres champs de formulaire en fonction de vos besoins */}
-                {/* Par exemple, des champs pour les images, la durée, etc. */}
-                
                 <div className="mt-10">
                     <button
                         type="submit"
