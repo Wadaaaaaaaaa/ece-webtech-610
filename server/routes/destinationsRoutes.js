@@ -1,4 +1,3 @@
-
 const express = require('express');
 
 module.exports = (supabase) => {
@@ -54,7 +53,7 @@ module.exports = (supabase) => {
         const { data, error } = await supabase
             .from('destinations')
             .select('*')
-            .ilike('name', '%${query}%');
+            .ilike('name', `%${query}%`); // Utilisez des backticks pour incorporer correctement la variable
 
         if (error) return res.status(400).json({ error });
         res.json(data);
