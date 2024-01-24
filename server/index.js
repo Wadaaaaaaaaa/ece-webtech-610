@@ -6,7 +6,7 @@ const destinationsRoutes = require('./routes/destinationsRoutes');
 const commentairesRoutes = require('./routes/commentairesRoutes');
 const categoriesRoutes = require('./routes/categoriesRoutes');
 const profilesRoutes = require('./routes/profilesRoutes');
-
+app.use(cors())
 const app = express();
 app.use(express.json());
 
