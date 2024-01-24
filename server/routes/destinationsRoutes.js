@@ -1,75 +1,89 @@
-const express = require('express');
+// Importez les bibliothèques nécessaires
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import supabase from '../supabaseClient';
 
-module.exports = (supabase) => {
-    const router = express.Router();
+// Assurez-vous d'importer les composants ou bibliothèques nécessaires pour votre formulaire
+// Par exemple, si vous avez besoin d'un éditeur de texte, importez-le ici.
 
-    // Créer une nouvelle destination
-    router.post('/create', async (req, res) => {
-        const { data, error } = await supabase
+export default function Ajout() {
+    const [nom, setNom] = useState(''); // Ajoutez les états nécessaires pour les champs du formulaire
+    const [description, setDescription] = useState('');
+    const router = useRouter();
+
+    useEffect(() => {
+        // Mettez en place des effets secondaires si nécessaire (par exemple, chargement de données)
+    }, []);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        // Récupérez les données du formulaire
+        const formData = new FormData(event.target);
+        const formProps = Object.fromEntries(formData.entries());
+
+        // Insérez les données dans la table des destinations
+        const { data: insertData, error: insertError } = await supabase
             .from('destinations')
-            .insert([req.body]);
+            .insert([formProps]);
 
-        if (error) return res.status(400).json({ error });
-        res.status(201).json(data[0]);
-    });
+        if (insertError) {
+            console.error('Error', insertError);
+        } else {
+            console.log('Inserted Data', insertData);
+            event.target.reset(); // Réinitialisez le formulaire après la soumission
+            router.push('/destinations'); // Redirigez l'utilisateur vers la liste des destinations après l'ajout
+        }
+    };
 
-    // Obtenir toutes les destinations
-    router.get('/', async (req, res) => {
-        const { data, error } = await supabase
-            .from('destinations')
-            .select('*');
+    return (
+        <div>
+            {/* Utilisez un formulaire pour collecter les informations de destination */}
+            <form onSubmit={handleSubmit} method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
+                {/* Ajoutez des champs de formulaire en fonction de vos besoins */}
+                <div className="mt-2.5">
+                    <label htmlFor="nom" className="block text-sm font-semibold leading-6 text-gray-900">
+                        Nom de la destination
+                    </label>
+                    <input
+                        type="text"
+                        name="nom"
+                        placeholder="Nom de la destination"
+                        required
+                        value={nom}
+                        onChange={(e) => setNom(e.target.value)}
+                        className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                </div>
 
-        if (error) return res.status(400).json({ error });
-        res.json(data);
-    });
+                <div className="mt-2.5">
+                    {/* Ajoutez d'autres champs de formulaire selon les besoins */}
+                    {/* Par exemple, une zone de description */}
+                    <label htmlFor="description" className="block text-sm font-semibold leading-6 text-gray-900">
+                        Description de la destination
+                    </label>
+                    <textarea
+                        name="description"
+                        placeholder="Description de la destination"
+                        required
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                </div>
 
-    // Mettre à jour une destination
-    router.put('/update/:id', async (req, res) => {
-        const { id } = req.params;
-        const { data, error } = await supabase
-            .from('destinations')
-            .update(req.body)
-            .eq('id', id);
-
-        if (error) return res.status(400).json({ error });
-        res.json(data[0]);
-    });
-
-    // Supprimer une destination
-    router.delete('/delete/:id', async (req, res) => {
-        const { id } = req.params;
-        const { data, error } = await supabase
-            .from('destinations')
-            .delete()
-            .eq('id', id);
-
-        if (error) return res.status(400).json({ error });
-        res.json(data[0]);
-    });
-
-    // Rechercher des destinations
-    router.get('/search', async (req, res) => {
-        const { query } = req.query;
-        const { data, error } = await supabase
-            .from('destinations')
-            .select('*')
-            .ilike('name', `%${query}%`); // Utilisez des backticks pour incorporer correctement la variable
-
-        if (error) return res.status(400).json({ error });
-        res.json(data);
-    });
-
-    // Récupérer une destination par son ID
-    router.get('/:id', async (req, res) => {
-        const { id } = req.params;
-        const { data, error } = await supabase
-            .from('destinations')
-            .select('*')
-            .eq('id', id);
-
-        if (error) return res.status(400).json({ error });
-        res.json(data[0]);
-    });
-
-    return router;
-};
+                {/* Ajoutez d'autres champs de formulaire en fonction de vos besoins */}
+                {/* Par exemple, des champs pour les images, la durée, etc. */}
+                
+                <div className="mt-10">
+                    <button
+                        type="submit"
+                        className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                        Ajouter la destination
+                    </button>
+                </div>
+            </form>
+        </div>
+    );
+}
