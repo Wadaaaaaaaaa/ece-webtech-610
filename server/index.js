@@ -9,7 +9,7 @@ const profilesRoutes = require('./routes/profilesRoutes');
 
 const app = express();
 app.use(express.json());
-
+app.use(cors())
 // Configurez Supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SERVICE_ROLE_KEY);
 
