@@ -50,7 +50,7 @@ contenant le fichier `global.css`.
 ## Deliverables 
 
 - Vercel URL: *client-webtech-610.vercel.app*
-- Supabase project URL: *https://tlamqakrieduehjsuhka.supabase.co*
+- Supabase : "Invitation envoyé via e-mail "
 
 ## Authors
 
