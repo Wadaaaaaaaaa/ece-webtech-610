@@ -126,10 +126,8 @@ contenant le fichier `global.css`.
 * **Light/dark mode**
   * Grade: *0*
 
- *Ajout , suppresion et commentaire 
- Probleme de communication avec supabase pour l'ajout , suppresion et extraction .
- Supabase marche correctement probleme d'url nous avons essayer de le debugger mais en deployent ca marcher pas .
- 
+ **On niveau de la supabase nous pouvons ecrire et supprimer sur la base de données .
+ Au niveau de la destination on peut ajouter et ecrire sur la base de données apres quant on appuie sur le bouton nous avons juste probleme d'url.
 
 
 ### Bonus Tasks
