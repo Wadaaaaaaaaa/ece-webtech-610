@@ -1,99 +1,201 @@
-
 import React, { useState } from 'react';
+import { supabase } from '@/lib/supabase';
 
-const ajoutDestination = () => {
+const AjoutDestination = ({ destinations }) => {
+  const [editing, setEditing] = useState(false);
+  const [libelle, setLibelle] = useState(destinations.libelle);
+  const [categorie_fk, setCategorie_fk] = useState(destinations.categorie_fk);
+  const [profile_dest_fk, setProfile_dest_fk] = useState(destinations.profile_dest_fk);
+  const [description, setDescription] = useState(destinations.description);
+  const [image, setImage] = useState(destinations.image);
 
-    const [formData, setFormData] = useState({
-        libelle: '',
-        categorie_fk: '',
-        profile_dest_fk: '',
-        image: '',
-        description: '',
-      });
-    
-      const handleChange = (event) => {
-        setFormData({
-          ...formData,
-          [event.target.libelle]: event.target.value,
-        });
+  const handleImageChange = (e) => {
+    const file = e.target.files?.[0];
+  
+    if (file) {
+      const reader = new FileReader();
+  
+      reader.onloadend = () => {
+        setImage(reader.result);
       };
-    
-      const submitForm = async (event) => {
-        event.preventDefault();
-    
-        try {
-          const response = await fetch('https://client-webtech-610.vercel.app/destinations/create', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
-    
-          if (!response.ok) {
-            throw new Error('Erreur lors de l\'ajout de la destination');
-          }
-    
-          alert('Destination ajoutée avec succès!');
-          // Réinitialiser le formulaire ou rediriger vers une autre page après l'ajout
-        } catch (error) {
-          console.error('Erreur:', error);
-          alert('Une erreur est survenue lors de l\'ajout de la destination');
-        }
-      };
+  
+      reader.readAsDataURL(file);
+    }
+  };
+  
 
-return (
-<div class="flex flex-col items-center justify-center h-screen dark">
-  <div class="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6">
-    <h2 class="text-2xl font-bold text-gray-200 mb-4">Ajouter une destination</h2>
+  async function updateDestination() {
+    try {
+      const { data, error } = await supabase
+        .from("destinations")
+        .update({
+          libelle: libelle,
+          categorie_fk: categorie_fk,
+          profile_dest_fk: profile_dest_fk,
+          description: description,
+          image: image,
+        })
+        .eq("id", destinations.id);
 
-    <form class="flex flex-wrap" onSubmit={submitForm}>
-      <input
-        type="text"
-        class="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150 w-full md:w-[48%] mr-[2%]"
-        placeholder="Nom de la ville"
-        name="libelle"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        class="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150 w-full md:w-[48%] ml-[2%]"
-        placeholder="Catégorie"
-        name="categorie_fk"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        class="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150 w-full md:w-[48%] mr-[2%]"
-        placeholder="User ID"
-        name="profile_dest_fk"
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        class="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150 w-full md:w-[48%] ml-[2%]"
-        placeholder="Image"
-        name="image"
-        onChange={handleChange}
-      />
-      <textarea
-        class="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-auto md:mb-auto md:w-full md:h-auto md:min-h-[100px] md:max-h-[100px] md:flex-grow md:flex-shrink md:flex-auto focus:bg-gray-md:focus:outline-none:focus:ring-blue-md:focus:border-transparent transition ease-in-out duration-fastest"
-        placeholder="Description"
-        name="description"
-        onChange={handleChange}
-      ></textarea>
+      if (error) throw error;
+      window.location.reload();
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
-      <button
-        type="submit"
-        class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
-      >
-        Ajouter
-      </button>
-    </form>
-  </div>
-</div>
+  async function deleteDestination() {
+    try {
+      const { data, error } = await supabase
+        .from("destinations")
+        .delete()
+        .eq("id", destinations.id);
 
-);
+      if (error) throw error;
+      window.location.reload();
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
+  async function addDestination() {
+    try {
+      const { data, error } = await supabase
+        .from("destinations")
+        .insert([
+          {
+            libelle: libelle,
+            categorie_fk: categorie_fk,
+            profile_dest_fk: profile_dest_fk,
+            description: description,
+            image: image,
+          },
+        ]);
+
+      if (error) throw error;
+      window.location.reload();
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  return (
+    <div className="max-w-md mx-auto bg-white shadow-md p-4 rounded-md border border-gray-300">
+      {editing === false ? (
+        <>
+          <h4>Adding a new destination</h4>
+          <button
+            className="bg-blue-500 text-white px-2 py-1 rounded cursor-pointer"
+            onClick={() => setEditing(false)}
+          >
+            Go back
+          </button>
+          <br />
+          {}
+          
+          <br />
+          <button
+            className="bg-green-500 text-white px-4 py-2 rounded mr-2 cursor-pointer"
+            onClick={() => addDestination()}
+          >
+            Add Destination
+          </button>
+          <h2 className="text-xl font-bold text-gray-800 mb-2">{destinations.libelle}</h2>
+          <p className="text-gray-600">{destinations.description}</p>
+
+          <button onClick={() => deleteDestination()} className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer">
+            Delete Destination
+          </button>
+
+          <button
+            className="bg-blue-500 text-white px-4 py-2 rounded mr-2 cursor-pointer"
+            onClick={() => setEditing(true)}
+          >
+            Edit Destination
+          </button>
+        </>
+      ) : (
+        <>
+          <h4>Editing the destination</h4>
+          <button
+            className="bg-blue-500 text-white px-2 py-1 rounded cursor-pointer"
+            onClick={() => setEditing(false)}
+          >
+            Go back
+          </button>
+          <br />
+          <div className="mb-4">
+            <label htmlFor="libelle" className="font-bold block mb-2">
+              Destination Name:
+            </label>
+            <input
+              id="libelle"
+              type="text"
+              value={libelle}
+              onChange={(e) => setLibelle(e.target.value)}
+              className="w-full px-3 py-2 border rounded"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="description" className="font-bold block mb-2">
+              Destination Description:
+            </label>
+            <textarea
+              id="description"
+              value={description}
+              className="w-full px-3 py-2 border rounded"
+              rows={4}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="categorie_fk" className="font-bold block mb-2">
+              Destination Category:
+            </label>
+            <input
+              id="categorie_fk"
+              type="text"
+              value={categorie_fk}
+              onChange={(e) => setCategorie_fk(e.target.value)}
+              className="w-full px-3 py-2 border rounded"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="profile_dest_fk" className="font-bold block mb-2">
+              User ID:
+            </label>
+            <input
+              id="profile_dest_fk"
+              type="text"
+              value={profile_dest_fk}
+              onChange={(e) => setProfile_dest_fk(e.target.value)}
+              className="w-full px-3 py-2 border rounded"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="image" className="font-bold block mb-2">
+              Destination Image:
+            </label>
+            <input
+              id="image"
+              type="text"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+              className="w-full px-3 py-2 border rounded"
+            />
+          </div>
+          
+          <br />
+          <button
+            className="bg-green-500 text-white px-4 py-2 rounded mr-2 cursor-pointer"
+            onClick={() => updateDestination()}
+          >
+            Update Destination
+          </button>
+        </>
+      )}
+    </div>
+  );
 };
-export default ajoutDestination;
+
+export default AjoutDestination;
