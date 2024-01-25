@@ -139,6 +139,7 @@ contenant le fichier `global.css`.
 ### Course Feedback
 
 *La bon côté de cette matière c'est le fait de pouvoir travailler en autonomie, par contre on aurait préféré un support de cours autre que les index sur github*
+En plus en tant que debutant en web le temps c'est plyus vite 
 ### Project Reuse
 
 - [ ] We authorize the professors to use our project as an example for the next year students (facultative).
