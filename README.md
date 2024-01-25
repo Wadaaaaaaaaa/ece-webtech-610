@@ -120,10 +120,16 @@ contenant le fichier `global.css`.
   * Grade: *0*
 
 * **Gravatar integration**
-  * Grade: *0*
+* Integre une gravatar dans le profil en mettant une fonction sur le navtar , aux moment du deployement ca marche pas 
+ 
   
 * **Light/dark mode**
   * Grade: *0*
+
+ *Ajout , suppresion et commentaire 
+ Probleme de communication avec supabase pour l'ajout , suppresion et extraction .
+ Supabase marche correctement probleme d'url nous avons essayer de le debugger mais en deployent ca marcher pas .
+ 
 
 
 ### Bonus Tasks
